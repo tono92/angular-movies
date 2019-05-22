@@ -26,8 +26,6 @@ export class MoviesCategoryComponent implements OnInit {
         })
 
 
-
-
       } else {
         // redirect to /movies/popular
         this.router.navigate(['/movies/popular'])
