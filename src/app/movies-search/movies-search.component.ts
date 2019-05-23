@@ -17,7 +17,6 @@ export class MoviesSearchComponent implements OnInit {
 
   search() {
     this.api.searchMovies(this.query).subscribe( (res: any) => {
-      console.log(res)
       this.moviesFound = res.results;
     })
   }
