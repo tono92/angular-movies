@@ -16,8 +16,12 @@ export class MoviesSearchComponent implements OnInit {
 
 
   search() {
-    this.api.searchMovies(this.query).subscribe( (res: any) => {
-      this.moviesFound = res.results;
-    })
+    if (this.query.trim()) {
+      this.api.searchMovies(this.query).subscribe((res: any) => {
+        this.moviesFound = res.results;
+      });
+    } else {
+       this.moviesFound = [];
+    }
   }
 }
