@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiMoviesService } from '../api-movies.service';
 
 @Component({
   selector: 'app-movies-search',
   templateUrl: './movies-search.component.html',
-  styleUrls: ['./movies-search.component.scss']
+  styleUrls: ['./movies-search.component.scss'],
 })
 export class MoviesSearchComponent implements OnInit {
+  moviesFound: object[] = [];
+  query: string = '';
 
-  constructor() { }
+  constructor(private api: ApiMoviesService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+
+  search() {
+    this.api.searchMovies(this.query).subscribe( (res: any) => {
+      console.log(res)
+      this.moviesFound = res.results;
+    })
   }
-
 }
